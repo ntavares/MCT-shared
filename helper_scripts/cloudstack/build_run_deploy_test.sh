@@ -338,6 +338,14 @@ echo "Set all offerings to HA"
 mysql -u cloud -pcloud cloud --exec "UPDATE service_offering SET ha_enabled = 1;"
 mysql -u cloud -pcloud cloud --exec "UPDATE vm_instance SET ha_enabled = 1;"
 
+
+# Either install with YUM, or
+# do: 
+#   mkdir -p /data/vendor
+#   wget http://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.1.3.tar.gz -O /data/vendor/mysql-connector-python-2.1.3.tar.gz
+#   pip install /data/vendor/mysql-connector-python-2.1.3.tar.gz
+yum -y install mysql-connector-python
+
 # Install Marvin
 echo "Installing Marvin"
 pip install --upgrade tools/marvin/dist/Marvin-*.tar.gz --allow-external mysql-connector-python
