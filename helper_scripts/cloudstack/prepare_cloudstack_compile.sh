@@ -1,6 +1,12 @@
 #!/bin/bash
 
+# Defaults
+GIT_REPO=https://github.com/apache/cloudstack.git
+
 # Script to prepare source for Apache CloudStack compile
+HELPERSCRIPTS=$(dirname $(readlink -f $0))
+
+[ "$HELPERSCRIPTS/config" ] && . "$HELPERSCRIPTS/config"
 
 # Get source
 BASEDIR=/data/git/${HOSTNAME}
@@ -20,7 +26,7 @@ mkdir -p ${BASEDIR}
 cd ${BASEDIR}
 if [ ! -d "cloudstack/.git" ]; then
   echo "No git repo found, cloning Apache CloudStack"
-  git clone https://github.com/apache/cloudstack.git
+  git clone $GIT_REPO cloudstack
   echo "Please use 'git checkout' to checkout the branch you need."
 else
   echo "Git Apache CloudStack repo already found"
@@ -32,7 +38,7 @@ if [ ! -f "scripts/vm/hypervisor/xenserver/vhd-util" ]; then
   echo "Fetching vhd-util.."
   cd scripts/vm/hypervisor/xenserver
   wget http://download.cloud.com.s3.amazonaws.com/tools/vhd-util
-  cd /data/git/$HOSTNAME/cloudstack
+  cd $BASEDIR/cloudstack
 fi
 
 # Set MVN compile options

@@ -1,0 +1,5 @@
+#
+# Fill in this file and move it to 'config' to override settings
+#
+GIT_REPO=https://n.tavares@git.ocom.com/scm/cloud/cloudstack.git
+
