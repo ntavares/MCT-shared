@@ -3,7 +3,7 @@
 DIST=$1
 
 
-fuction usage() {
+function usage() {
    echo "ERROR: Missing argument."
    echo "$0 <dist>"
    echo "Valid dist: u12, u14, c7"
