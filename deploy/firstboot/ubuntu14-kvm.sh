@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sed -i 's,/archive.ubuntu.com/ubuntu,/mirror.nl.leaseweb.net/ubuntu,g' /etc/apt/sources.list
-apt-get update
+#apt-get update
 
 # FIX Ubuntu stupidity
 echo "hostname \$new_host_name" > /etc/dhcp/dhclient-exit-hooks.d/sethostname

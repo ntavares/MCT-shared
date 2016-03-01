@@ -5,8 +5,6 @@ IPADDRESS="192.168.22."
 MACADDR="52:54:00:1d:aa:"
 CATEGORY="xen
 kvm
-u12-k
-u14-k
 ovm
 net
 prx
