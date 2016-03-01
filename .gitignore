@@ -4,3 +4,6 @@
 *.pyc
 *~
 helper_scripts/cloudstack/config
+deploy/role/kvm.conf
+deploy/role/cs.conf
+

@@ -7,7 +7,7 @@ echo "Note: ${NEWHOST}: Waiting for the VM to boot..."
 while ! ping -w 1 -c1 ${NEWHOST} &>/dev/null; do : echo -n . ; sleep 1; done
 echo "Note: ${NEWHOST}: Installing and configuring"
 echo "Note: ${NEWHOST}: This will take some time. You may send this to the background."
-while ping -w 1 -c5 ${NEWHOST} &>/dev/null; do : echo -n . ; sleep 1; done
+while ping -w 1 -c1 ${NEWHOST} &>/dev/null; do : echo -n . ; sleep 1; done
 echo "Note: ${NEWHOST}: Rebooting"
 while ! ping -w 1 -c1 ${NEWHOST} &>/dev/null; do : echo -n . ; sleep 1; done
 sleep 15
