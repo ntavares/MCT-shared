@@ -7,7 +7,7 @@ sed -i 's,/archive.ubuntu.com/ubuntu,/mirror.nl.leaseweb.net/ubuntu,g' /etc/apt/
 echo "hostname \$new_host_name" > /etc/dhcp/dhclient-exit-hooks.d/sethostname
 
 # Disable apparmor
-apt-get -y remove app-armor
+apt-get -y remove apparmor
 
 # Enable root password login
 sed -i 's,^PermitRootLogin .*$,PermitRootLogin yes,g' /etc/ssh/sshd_config
@@ -18,14 +18,17 @@ service ssh restart
 sleep 5
 export DEBIAN_FRONTEND=noninteractive
 apt-get -y install maven tomcat6 mkisofs python-paramiko \
-    jsvc jsvc libws-commons-util-java \
+    jsvc libws-commons-util-java \
     genisoimage gcc python python-mysqldb \
     openssh-client \
-    wget git python-ecdsa bzip2 python-setuptools \
-    libpython-dev vim nfs-common screen \
+    wget git \
+#    python-ecdsa \
+    bzip2 python-setuptools \
+#    libpython-dev \
+    vim nfs-common screen \
     ssh-askpass \
     openjdk-6-jdk \
-    rubygems-integration \
+#    rubygems-integration \
     netcat python-mysql.connector \
     python-crypto \
     python-nose \

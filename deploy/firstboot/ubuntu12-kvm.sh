@@ -8,6 +8,8 @@ echo "hostname \$new_host_name" > /etc/dhcp/dhclient-exit-hooks.d/sethostname
 
 # Disable apparmor
 apt-get -y remove app-armor
+dpkg --purge apparmor
+#apt-get install linux-image-generic-lts-trusty
 
 # Enable root password login
 sed -i 's,^PermitRootLogin .*$,PermitRootLogin yes,g' /etc/ssh/sshd_config
@@ -18,7 +20,7 @@ sleep 5
 #yum -y install http://mirror.karneval.cz/pub/linux/fedora/epel/epel-release-latest-7.noarch.rpm
 #yum -y install qemu-kvm libvirt libvirt-python net-tools bridge-utils vconfig setroubleshoot virt-top virt-manager openssh-askpass wget vim
 #yum --enablerepo=epel -y install sshpass
-apt-get -y install qemu-kvm libvirt0 python-libvirt net-tools bridge-utils vlan virt-top virt-manager ssh-askpass wget vim sshpass nfs-common rpcbind
+apt-get -y install qemu-kvm libvirt0 python-libvirt net-tools bridge-utils vlan virt-top virt-manager ssh-askpass wget vim sshpass nfs-common rpcbind git
 
 # TODO - Enable rpbind for NFS
 #systemctl enable rpcbind
@@ -60,6 +62,10 @@ sed -i -e 's/\#vnc_listen.*$/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf
 
 # TODO - Network
 # Device
+
+# Allow everybody in
+git clone https://git.ocom.com/scm/infracloud/pubkeys.git
+cat pubkeys/* >> /root/.ssh/authorized_keys
 
 # Reboot
 reboot
